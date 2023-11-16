@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid blue;
+            margin: 10px auto;
+            padding: 1px 3px;
+        }
+        
+    </style>
+</head>
+ 
+<body>
+    <br><br>
+    <button type="button" onclick="tableToCSV()">
+        download CSV
+    </button>
+ 
+    <script type="text/javascript">
+        // createArray 函數
+        function createArray(length) {
+        var arr = new Array(length || 0),
+            i = length;
+        
+        if (arguments.length > 1) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            while (i--) arr[length - 1 - i] = createArray.apply(this, args);
+        }
+        return arr;
+        }
+
+        // 第一行為欄位名稱
+        const header = ['序號', '班級', '學號', '姓名', 'GitHub', '作業一', '作業二', '作業三', '作業四', '作業五', '作業六', '作業七', '作業八', '作業九', '作業十'];
+
+        // 生成虛構成績表的函數
+        function generateDummyData() {
+            const dummyData = [];       // 儲存全部欄位資料
+            dummyData.push(header);
+
+            // 生成120位學生的資料
+            for (let i = 1; i <= 120; i++) {
+                const [className, studentID] = generateClass()      // 班級, 學號
+                const grades = generateDummyScores();               // 成績陣列
+                // 學生資料
+                const student = [
+                    i,                             // 序號
+                    className,                     // 班級
+                    studentID,                     // 學號
+                    generateName(),                // 姓名
+                    generateRandomGitHubAccount(), // GitHub
+                    ...grades,                     // 作業分數
+                ];
+
+                dummyData.push(student);
+            }
+        return dummyData;
+        }
+
+        // 生成班級及學號
+        function generateClass() {
+            const classes = ["資工", "電資AI", "電資資安", "創新AI"];    // 班級名稱
+            const classCode = ["590", "598", "C52", "C53", "C71"];     // 班級代碼
+            const grade = ["一", "二", "三", "四", "碩一", "碩二"];     // 年級
+            const year = [112, 111, 110, 109, 112, 111];               // 根據年級對應學年
+
+            const gradeIndex = Math.floor(Math.random() * grade.length)
+            if (gradeIndex < 4) {
+                className = classes[0] + grade[gradeIndex]
+                classNumber = classCode[0]
+            }
+            else {
+                classIndex = Math.floor(Math.random() * classes.length)
+                className = classes[classIndex] + grade[gradeIndex]
+                classNumber = classCode[classIndex + 1]
+            }
+            
+            const num = String(Math.floor(Math.random() * 999) + 1).padStart(3, "0");
+            
+            const studentID = year[gradeIndex] + classNumber + num;
+            return [className, studentID];
+        }
+
+        // 生成學號
+        function generateStudentID(classType) {
+        const prefix = getRandomElement(["111", "112"]);
+        
+        const classCode = {
+            "資工系": "590",
+            "資工所": "598",
+            "電資AI": "C52",
+            "電資資安": "C53",
+            "創新AI": "C71",
+        };
+
+        const classNumber = classCode[classType];
+
+        const randomDigits = Math.floor(Math.random() * 999) + 1;
+        const paddedNumber = String(randomDigits).padStart(3, "0");
+
+        return prefix + classNumber + paddedNumber;
+        }
+
+        // 生成學號
+        function generateName() {
+        const name = String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+                String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+                String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00));
+
+        return name;
+        }
+
+        // 生成隨機的GitHub帳號
+        function generateRandomGitHubAccount() {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const accountLength = 10;
+        let account = "";
+
+        for (let i = 0; i < accountLength; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            account += characters[randomIndex];
+        }
+
+        return account;
+        }
+
+        // 生成虛構作業成績
+        function generateDummyScores() {
+            const scores = [];
+
+            for (let i = 0; i < 10; i++) {
+                const score = Math.floor(Math.random() * 11); // 0~10 分
+                scores.push(score);
+            }
+
+            return scores;
+        }
+
+        // // 生成虛構成績表
+        const data = generateDummyData();
+        console.log(data); // 確認 data 變數是否被定義和賦值
+
+        // // 使用 createArray 函數創建二維陣列
+        // var a3 = createArray(data.length, header.length);
+
+        // // 將 data 填充到 a3 中
+        // for (let i = 0; i < data.length; i++) {
+        //     a3[i] = createArray(header.length);
+        //     for (let j = 0; j < header.length; j++) {
+        //         a3[i][j] = data[i][j].toString(); // 轉換成字串
+        //     }
+        // }
+
+        // 创建表格
+        var table = document.createElement('table');
+        for (var row of data) {
+            table.insertRow();
+            for (var j = 0; j < row.length; j++) {
+                let newCell = table.rows[table.rows.length - 1].insertCell();
+                newCell.textContent = row[j];
+            }
+        }
+        document.body.appendChild(table);
+
+        // 寫入CSV檔案並呈現在網頁上
+        function tableToCSV() {
+            var csv_data = [];
+            var rows = document.getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+                var cols = rows[i].querySelectorAll('td,th');
+                var csvrow = [];
+                for (var j = 0; j < cols.length; j++) {
+                    csvrow.push(cols[j].innerHTML);
+                }
+                csv_data.push(csvrow.join(","));
+            }
+            csv_data = csv_data.join('\n');
+            downloadCSVFile(csv_data);
+        }
+
+        function downloadCSVFile(csv_data) {
+            var CSVFile = new Blob([csv_data], {
+                type: "text/csv"
+            });
+            var temp_link = document.createElement('a');
+            temp_link.download = "data.csv";
+            var url = window.URL.createObjectURL(CSVFile);
+            temp_link.href = url;
+            temp_link.style.display = "none";
+            document.body.appendChild(temp_link);
+            temp_link.click();
+            document.body.removeChild(temp_link);
+        }
+    </script>
+</body>
+ 
+</html>
