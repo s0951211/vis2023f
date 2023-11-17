@@ -124,6 +124,7 @@
     .github-corner:hover 
     .octo-arm {
       animation:none
+
     }
 
     .github-corner 
@@ -178,14 +179,59 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      該次作業程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/vis2023f/hw<span style="color:red;">02</span>/src/ 檔案夾。
+      Simple baseline 程式碼，請放在 https://github.com/
+      <span style="color:red;">你的帳號</span>
+      /vis2023f/hw
+      <span style="color:red;">02</span>
+      /src/simple 檔案夾。
+      <br>
+      
+      <hr>
+      Medium baseline 程式碼，請放在 https://github.com/
+      <span style="color:red;">你的帳號</span>
+      /vis2023f/hw
+      <span style="color:red;">02</span>
+      /src/medium 檔案夾。
+      <br>
+      
+      <hr>
+      Strong baseline 程式碼，請放在 https://github.com/
+      <span style="color:red;">你的帳號</span>
+      /vis2023f/hw
+      <span style="color:red;">02</span>
+      /src/strong 檔案夾。
+      <br>
+      
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <h4>前往你的 Demo 網頁</h4>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      <a href="https://s0951211.github.io/vis2023f/hw02/src/simple/">https://s0951211.github.io/vis2023f/hw02/src/simple/</a>
+      <hr>
+      <a href="https://s0951211.github.io/vis2023f/hw02/src/medium/">https://s0951211.github.io/vis2023f/hw02/src/medium/</a>   
+      <hr>
+      <a href="https://s0951211.github.io/vis2023f/hw02/src/medium/">https://s0951211.github.io/vis2023f/hw02/src/strong/</a>
+      </div>
+  </div>
+
+  
+  <!-- ------------------------------------------------>
+
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      這次的作業要使用到 Observable 平台，由於是第一次使用，對D3也是一個新手小白，所以一開始花了一些時間習慣使用介面，並學習D3語法，
+      長條圖和直方圖是資料可視化中最常見的呈現方式，雖然是很基本的圖表，但在實作時還是遇到了些困難，在用長條圖呈現每個星座的人數時，x軸的名稱總會亂掉，
+      後來才知道需要指定x軸上的刻度所對應的值，這次的作業讓我學到很多，收益良多。
     </div>
   </div>
 
@@ -199,21 +245,42 @@
           <th>配分</th>
           <th>分項描述</th>
         </tr>
+
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
+          <td rowspan="16" id="myTotal"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked="checked"></td>
           <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td>Simple baseline-1 - 以histogram呈現每個年份出生的人數</td>
         </tr>
-        <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+
+         <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked="checked"></td>
+          <td id='m2'>2</td>
+          <td>Simple baseline-2 - 可調整margin, fill color, tip</td>
         </tr>
+        
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked="checked"></td>
           <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td>Medium baseline-1 - 以bar chart呈現每個年份出生的人數</td>
+        </tr>
+
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked="checked"></td>
+          <td id='m4 ' >2</td>
+          <td>Medium baseline-2 - 可調整margin, fill color, tip </td>
+        </tr>
+        
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox5" checked="checked"></td>
+          <td id='m5 ' >1</td>
+          <td>Strong baseline-1 - 以bar chart呈現每個星座的人數 </td>
+        </tr>
+
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox6" checked="checked"></td>
+          <td id='m6' >1</td>
+          <td>Strong baseline-2 - 以histogram呈現每個星座的人數 </td>
         </tr>
       </table>
     </div>
@@ -222,13 +289,47 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+       <h4>Simple baseline - 以 histogram 呈現每個年份出生的人數，可調整margin, fill color, tip</h4>
+    </div>
+  </div>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+      src="https://observablehq.com/embed/29070f5bad21902c@13?cell=*"></iframe>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+       <h4>Medium baseline - 以 bar chart 呈現每個年份出生的人數，可調整margin, fill color, tip</h4>
+    </div>
+  </div>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+      src="https://observablehq.com/embed/09b79941a1e1cf1c@23?cell=*"></iframe>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+       <h4>Strong baseline - 分別以 bar chart 和 histogram 呈現每個星座的人數</h4>
+    </div>
+  </div>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+  src="https://observablehq.com/embed/ca4ec19ed1a026de@153?cell=*"></iframe> 
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------>
+
 
   <!-- ------------------------------------------------>
 
@@ -253,22 +354,35 @@
   
   function update(){
 
-    var score = 0;
+var score = 0;
 
-    if (d3.select("#myCheckbox1").property("checked")){
-      score += parseInt(d3.select('#m1').html());
-    }
+if (d3.select("#myCheckbox1").property("checked")){
+  score += parseInt(d3.select('#m1').html());
+}
 
-    if (d3.select("#myCheckbox2").property("checked")){
-      score += parseInt(d3.select('#m2').html());   
-    }
+if (d3.select("#myCheckbox2").property("checked")){
+  score += parseInt(d3.select('#m2').html());   
+}
 
-    if (d3.select("#myCheckbox3").property("checked")){
-      score += parseInt(d3.select('#m3').html());   
-    }
+if (d3.select("#myCheckbox3").property("checked")){
+  score += parseInt(d3.select('#m3').html());   
+}
 
-    d3.select("#myTotal").html(score);    
-  }
+if (d3.select("#myCheckbox4").property("checked")){
+  score += parseInt(d3.select('#m4').html());
+}
+
+if (d3.select("#myCheckbox5").property("checked")){
+  score += parseInt(d3.select('#m5').html());   
+}
+
+if (d3.select("#myCheckbox6").property("checked")){
+  score += parseInt(d3.select('#m6').html());   
+}
+
+d3.select("#myTotal").html(score);    
+}
+
 </script>
 
 </body>
