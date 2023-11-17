@@ -1,0 +1,14 @@
+{
+  "name": "ca4ec19ed1a026de",
+  "main": "ca4ec19ed1a026de@170.js",
+  "version": "170.0.0",
+  "homepage": "https://observablehq.com/d/ca4ec19ed1a026de",
+  "author": {
+    "name": "yi zhen's Workspace",
+    "url": "https://observablehq.com/@yi-zhen-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
